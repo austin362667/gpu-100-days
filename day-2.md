@@ -63,10 +63,10 @@ This is the penthouse—where we coordinate entire clusters of GPUs. Massive mod
 *What's Happening?* The system manages compute, memory, and communication at scale. It's like conducting an orchestra where each musician (GPU) must play their part perfectly, and the conductor must ensure they're all synchronized.
 
 *Key Techniques:*
-- **Parallelism Strategies:**
-- **Intelligent Batching:** Frameworks like vLLM use PagedAttention to reduce KV cache fragmentation and SGLang use RadixAttention to promote  KV cache reuse. Both are sophisticated ways of promote efficient use of KV cache.
+- **Parallelism Strategies**
+- **Intelligent Batching:** Like vLLM uses _PagedAttention_ to reduce KV cache fragmentation and SGLang uses _RadixAttention_ to increase  KV cache reuse. Both are sophisticated ways of promote efficient use of KV cache.
 
-- **Communication Optimization:** Using high-speed interconnects (NVLink, InfiniBand) to minimize data transfer overhead. Frameworks like [Triton-distributed](https://github.com/ByteDance-Seed/Triton-distributed) is a good example of overlapping communication stages of aggregate operations.
+- **Communication Optimization:** Using high-speed interconnects (NVLink, InfiniBand) to minimize data transfer overhead within nodes and networks. Other than that, frameworks like [Triton-distributed](https://github.com/ByteDance-Seed/Triton-distributed) is a good example of overlapping communication stages of aggregate operations.
 
 #### System Layer Parallelism Strategies
 
