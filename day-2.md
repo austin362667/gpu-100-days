@@ -22,7 +22,7 @@ This is the basement—where code meets silicon. A kernel is the smallest unit o
 
 *What's Happening?* Kernels are optimized to achieve high arithmetic intensity (computations per byte of memory accessed). Since memory access is slower than computation, the goal is to perform as much math as possible per data fetch—just like we learned with our GPU monster yesterday.
 
-### Kernel Layer Optimization Techniques
+#### Kernel Layer Optimization Techniques
 
 The kernel layer uses three main optimization strategies:
 
@@ -38,14 +38,7 @@ This is the main floor—where we view the model as a computational graph. Inste
 
 *What's Happening?* Frameworks analyze the graph and rewrite it for efficiency, reducing redundant computations and memory usage. They ask questions like: "Can we combine these operations? Can we eliminate this memory copy? Can we compute this once instead of three times?"
 
-*Key Techniques:*
-- **Operator Fusion:** Combining multiple operations (e.g., matrix multiply + bias add + activation) into a single kernel to avoid unnecessary memory writes and reads.
-- **JIT Compilation:** Tools like PyTorch's `torch.compile` convert flexible Python code into an optimized static graph for deployment.
-- **Memory Planning:** Pre-allocating and reusing memory buffers to minimize allocation overhead.
-
-*Tools & Terms:* PyTorch, TensorFlow, TensorRT, ONNX, XLA
-
-### Graph Layer Optimization Techniques
+#### Graph Layer Optimization Techniques
 
 The graph layer employs several key optimization strategies:
 
@@ -57,6 +50,7 @@ The graph layer employs several key optimization strategies:
 | **Sparsity** | Skip zero computations (static/dynamic) | Reduces computation for sparse models |
 | **JIT Compilation** | Convert dynamic graphs to optimized static graphs | Eliminates Python overhead, enables optimizations |
 
+---
 
 > **Personal Thoughts:** In theory, a “smart-enough” compiler could use hardware specs and algorithmic needs to auto‑generate high‑performance kernels, letting users work purely at the graph level. But no such compiler exists today, so researchers and engineers must continue hand‑tuning kernels—for the foreseeable future. I highly recommend **[Chris Lattner](https://www.nondot.org/sabre/)**’s blog series **[Democratizing AI Compute](https://www.modular.com/blog/democratizing-compute-part-1-deepseeks-impact-on-ai)** at [Modular](https://www.modular.com/mojo). Besides, cutting training and inference costs remains vital: GPU FLOPS keep outpacing HBM bandwidth growth, so manual effort to turn memory‑bound tasks into compute‑bound ones is still essential. Just a late-night thought I had—happy to hear any feedback or continue the discussion! Feel free to reach out.
 
@@ -70,15 +64,11 @@ This is the penthouse—where we coordinate entire clusters of GPUs. Massive mod
 
 *Key Techniques:*
 - **Parallelism Strategies:**
-  - *Tensor Parallelism:* Dividing model layers across GPUs (splitting the weight matrices).
-  - *Pipeline Parallelism:* Assigning different layers to different GPUs in a sequential pipeline.
-  - *Data Parallelism:* Running the same model on multiple GPUs with different data batches.
-- **Intelligent Batching:** Frameworks like vLLM use dynamic batching to group requests, keeping GPUs fully utilized.
-- **Communication Optimization:** Using high-speed interconnects (NVLink, InfiniBand) to minimize data transfer overhead.
+- **Intelligent Batching:** Frameworks like vLLM use PagedAttention to reduce KV cache fragmentation and SGLang use RadixAttention to promote  KV cache reuse. Both are sophisticated ways of promote efficient use of KV cache.
 
-*Tools & Terms:* vLLM, TensorRT-LLM, DeepSpeed, Megatron-LM, FasterTransformer
+- **Communication Optimization:** Using high-speed interconnects (NVLink, InfiniBand) to minimize data transfer overhead. Frameworks like [Triton-distributed](https://github.com/ByteDance-Seed/Triton-distributed) is a good example of overlapping communication stages of aggregate operations.
 
-### System Layer Parallelism Strategies
+#### System Layer Parallelism Strategies
 
 The system layer coordinates multiple GPUs using various parallelism techniques:
 
@@ -180,7 +170,7 @@ Even with perfect kernels and graph optimization, you can still have system-leve
 - **Communication Overhead:** In multi-GPU setups, time spent transferring data between GPUs can dominate.
 - **Load Imbalance:** Some GPUs might finish their work much earlier than others, leaving them idle.
 
-This is why frameworks like vLLM focus heavily on system-level optimizations like continuous batching and efficient memory management.
+This is why frameworks like SGLang or vLLM focus heavily on system-level optimizations like continuous batching and efficient memory management.
 
 </details>
 
