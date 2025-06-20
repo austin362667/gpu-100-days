@@ -209,8 +209,8 @@ The foundation is set. Now let's start building.
 
 ### Suggested Readings
 
-1. **[Huizi Mao, "Understanding LLM System with 3-layer Abstraction"](https://hao-ai-lab.github.io/cse234-w25/assets/scribe_notes/jan9_scribe.pdf)**: A concise breakdown of LLM system architecture that inspired this framework.
-2. **[Hao Zhang et al., "CSE-234: Data Systems for Machine Learning" Lecture Notes](https://cseweb.ucsd.edu/classes/wi23/cse234-a/)**: Detailed insights into ML system design and optimization strategies.
+1. **[Huizi Mao, "Understanding LLM System with 3-layer Abstraction"](https://ralphmao.github.io/ML-software-system/)**: A concise breakdown of LLM system architecture that inspired this framework.
+2. **[Hao Zhang et al., "CSE-234: Data Systems for Machine Learning" Lecture Notes](https://hao-ai-lab.github.io/cse234-w25/assets/scribe_notes/jan9_scribe.pdf)**: Detailed insights into ML system design and optimization strategies.
 
 ---
 
