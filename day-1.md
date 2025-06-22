@@ -127,6 +127,6 @@ print(f"Achieved TFLOPS (MatMul): {matmul_gflops / 1000:.2f}") # Compare this to
 
 ### Suggested Readings
 
-1.  [**Making Deep Learning Go Brrrr From First Principles by Horace He**](https://horace.io/brrr_intro.html): The main inspiration for this post. A must-read for a clear, first-principles-based mental model.
-2.  **[Understanding GPU Performance: A Guide for Developers by Arthur Chiao](https://arthurchiao.art/blog/understanding-gpu-performance/)**: The crucial article that explains why `gpu-util` can be misleading and why we need to think deeper, like a monster nutritionist.
-3.  **[The Roofline Model (from the JAX Scaling Book)](https://jax-ml.github.io/scaling-book/roofline/)**: An excellent and concise explanation of the Roofline model—the science behind feeding our monster effectively.
+1.  [**"Making Deep Learning Go Brrrr From First Principles" by Horace He**](https://horace.io/brrr_intro.html): The main inspiration for this post. A must-read for a clear, first-principles-based mental model.
+2.  **["Understanding GPU Performance: A Guide for Developers" by Arthur Chiao](https://arthurchiao.art/blog/understanding-gpu-performance/)**: The crucial article that explains why `gpu-util` can be misleading and why we need to think deeper, like a monster nutritionist.
+3.  **[The Roofline Model (from the "JAX Scaling Book")](https://jax-ml.github.io/scaling-book/roofline/)**: An excellent and concise explanation of the Roofline model—the science behind feeding our monster effectively.
