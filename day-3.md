@@ -103,7 +103,7 @@ Let's revisit the kernel launch syntax: `kernel<<<GridSize, BlockSize>>>()`.
 
 When you launch a kernel this way, you can imagine it as a "Shadow Clone Jutsu" (影分身之術) or "Dupli-Kate from Invincible". The kernel code is replicated for every single thread, and each clone executes it independently and in parallel.
 
-[Shadow Clone Jutsu" (影分身之術)](./assets/day-3-1.jpeg)
+![Shadow Clone Jutsu" (影分身之術)](./assets/day-3-1.jpeg)
 
 How does each clone know who it is? CUDA provides built-in variables:
 *   `threadIdx.x`: The ID of the current thread within its block.
@@ -133,15 +133,13 @@ __global__ void addVectors(float *a, float *b, float *c, int n) {
 Each thread computes `c[i] = a[i] + b[i]` for a different `i`. This is the essence of data parallelism on a GPU.
 
 
-[Image from "CUDA by Example", a fantastic visual of the grid/block/thread hierarchy)](./assets/day-3-0.jpeg)
+![Image from "CUDA by Example", a fantastic visual of the grid/block/thread hierarchy)](./assets/day-3-0.jpeg)
 
 ### A Beautiful Example: The Julia Set
 
 Theory is great, but seeing is believing. The Julia Set is a fractal generated in the complex plane. To see if a point is in the set, you repeatedly apply a mathematical formula. The key is that the calculation for each point (or pixel in an image) is **completely independent** of all other points. This makes it a perfect candidate for GPU parallelization.
 
 We can map each pixel of our output image to a single GPU thread. Each thread will calculate its assigned pixel's color based on the Julia set math.
-
-[Julia Set Image](./assets/day-3-2.jpeg)
 
 Here's the core of the kernel:
 
@@ -169,8 +167,7 @@ __global__ void kernel( unsigned char *ptr ) {
 
 By launching a 1000x1000 grid of threads, we calculate one million pixels simultaneously. The result is a beautiful, complex image generated in a fraction of the time it would take on a CPU.
 
-
-*(Result from the julia_gpu.cu example)*
+![Julia Set Image](./assets/day-3-2.jpeg)
 
 ### Final Thoughts & A Deeper Dive
 
