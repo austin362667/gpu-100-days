@@ -135,7 +135,7 @@ __global__ void addVectors(float *a, float *b, float *c, int n) {
 Each thread computes `c[i] = a[i] + b[i]` for a different `i`. This is the essence of data parallelism on a GPU.
 
 <div align="center">
-<img src="assets/day-3-0.jpeg" alt="Image from "CUDA by Example", a fantastic visual of the grid/block/thread hierarchy" width="200"/>
+<img src="assets/day-3-0.jpeg" alt="Image from "CUDA by Example", a fantastic visual of the grid/block/thread hierarchy" width="600"/>
 </div>
 
 
@@ -172,7 +172,7 @@ __global__ void kernel( unsigned char *ptr ) {
 By launching a 1000x1000 grid of threads, we calculate one million pixels simultaneously. The result is a beautiful, complex image generated in a fraction of the time it would take on a CPU.
 
 <div align="center">
-<img src="assets/day-3-2.jpeg" alt="The Outcome Image of Julia Set" width="200"/>
+<img src="assets/day-3-2.jpeg" alt="The Outcome Image of Julia Set" width="400"/>
 </div>
 
 
