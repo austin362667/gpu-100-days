@@ -176,7 +176,7 @@ By launching a 1000x1000 grid of threads, we calculate one million pixels simult
 </div>
 
 
-### Final Thoughts & A Deeper Dive
+### A Deeper Dive
 
 Today, we've taken our first concrete steps. We learned about the host/device model, the `__global__` keyword, kernel launches, and the critical pattern of `cudaMalloc -> cudaMemcpy -> kernel launch -> cudaMemcpy`.
 
