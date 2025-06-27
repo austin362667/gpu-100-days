@@ -1,18 +1,19 @@
-
 # Day 1: Your GPU is a Monster. Don't Let It Starve.
 
-Welcome to Day 1 of the GPU Challenge! Let's talk about how to tame the beast.
+Welcome to Day 1 of the GPU Challenge! Let's talk about how to tame the powerful GPU beast.
+
+[The cute green monster](./assets/day-1-0.jpeg)
 
 My journey into GPU programming started with a classic mistake. I'd run my code, summon `nvidia-smi`, and see `gpu-util` at 100%. "Success!" I thought. "My GPU is working hard." But my code was still slow. Why?
 
-I was treating my GPU like a machine, but it's more helpful to think of it as a monster. And I was letting it starve. As Arthur Chiao brilliantly points out, `gpu-util` at 100% only means the monster is *awake*. It doesn't mean it's *feasting*. It could be awake but just nibbling on tiny snacks, leaving its immense digestive power completely untapped.
+I was underestimating GPU's abilities failed to unlock their full potential. It's more helpful to think of it as a monster. And I was letting it starve. To be more specific, `gpu-util` at 100% only means the monster is *awake*. It doesn't mean it's *feasting*. It could be awake but just nibbling on tiny snacks, leaving its immense digestive power completely untapped.
 
 To truly unleash the beast, we need to understand how it eats. The **Roofline Model** is our guide to monster nutrition.
 
 Think of your GPU monster as having two key attributes:
 
-1.  **Its Mouth (Memory Bandwidth):** The size of its mouth determines how fast it can devour data, measured in **Bytes per Second**. This is the **Memory Roof**.
-2.  **Its Stomach (Compute Power):** The speed of its digestion determines how much useful work it can do, measured in **Floating Point Operations per Second (FLOP/s)**. This is the **Compute Roof**.
+1.  **Its Mouth Size (Memory Bandwidth):** The size of its mouth determines how fast it can devour data, measured in **Bytes per Second**. This is the **Memory Roof**.
+2.  **Its Stomach Digestion Speed (Compute Power):** The speed of its digestion determines how much useful work it can do, measured in **Floating Point Operations per Second (FLOP/s)**. This is the **Compute Roof**.
 
 The key to feeding it effectively is the **caloric density** of the food you provide—its **Operational Intensity** or **Arithmetic Intensity** (`FLOPs / Byte`).
 

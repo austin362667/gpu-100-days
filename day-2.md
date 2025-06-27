@@ -2,9 +2,11 @@
 
 Welcome to Day 2 of the GPU Challenge! Before we dive into CUDA kernels and memory optimization, we need a clear view of the system we're building. 
 
-Large Language Models (LLMs) aren't just a single neural network—they're complex systems designed to run massive models efficiently. The goal: maximize **throughput** (tokens per second) and minimize **latency** (response time). But here's the thing: to understand where GPUs fit, we need to think like system architects, not just programmers.
+Large Language Models (LLMs) aren't just a single neural network. They're complex systems designed to run massive models efficiently and serve under different workloads' requirements. The goal: maximize **throughput** (tokens per second) and minimize **latency** (response time). But here's the thing: to understand where GPUs fit, we need to think like system architects from a birds' eyes overview, not just programmers.
 
 Think of an LLM system as a three-story building. Each floor has a different purpose, different tools, and different optimization strategies. Our GPU programming journey will take us from the basement (raw hardware) to the penthouse (distributed systems). Let's tour the building.
+
+[The three-story building](./assets/day-2-0.jpeg)
 
 ### The Three Layers of an LLM System
 
@@ -34,7 +36,7 @@ The kernel layer uses three main optimization strategies:
 
 **2. The Graph Layer: Model Optimization**
 
-This is the main floor—where we view the model as a computational graph. Instead of optimizing individual kernels, the focus is on streamlining the entire sequence of operations. Think of it as optimizing the recipe, not just the individual cooking techniques.
+This is the main floor—where we view the model as a computational graph. Instead of optimizing individual kernels, the focus is on streamlining the entire **sequence of operations**. Think of it as optimizing the recipe, not just the individual cooking techniques.
 
 *What's Happening?* Frameworks analyze the graph and rewrite it for efficiency, reducing redundant computations and memory usage. They ask questions like: "Can we combine these operations? Can we eliminate this memory copy? Can we compute this once instead of three times?"
 
@@ -123,7 +125,7 @@ Running an LLM efficiently requires optimizing all three layers. You can't just 
 - The **Graph Layer** streamlines your model's operations and eliminates wasteful computations.
 - The **Kernel Layer** squeezes every drop of performance from the hardware.
 
-Miss any layer, and your system will have bottlenecks. It's like having a Ferrari engine in a horse-drawn carriage—the potential is there, but the system design limits performance.
+Miss any layer, and your system will have bottlenecks. It's like having a Ferrari engine in a horse-drawn carriage, meaning the potential is there, but the system design limits performance.
 
 Our challenge starts in the kernel layer, where we'll learn to write high-performance GPU code. This high-level map gives us context for where our work fits in the bigger picture.
 
