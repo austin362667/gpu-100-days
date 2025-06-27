@@ -10,7 +10,7 @@ Welcome to Day 1 of the GPU Challenge! Let's talk about how to tame the powerful
 
 My journey into GPU programming started with a classic mistake. I'd run my code, summon `nvidia-smi`, and see `gpu-util` at 100%. "Success!" I thought. "My GPU is working hard." But my code was still slow. Why?
 
-I was underestimating GPU's abilities failed to unlock their full potential. It's more helpful to think of it as a monster. And I was letting it starve. To be more specific, `gpu-util` at 100% only means the monster is *awake*. It doesn't mean it's *feasting*. It could be awake but just nibbling on tiny snacks, leaving its immense digestive power completely untapped.
+I was underestimating GPU's abilities and failed to unlock their full potential. It's more helpful to think of it as a monster. And I was letting it starve. To be more specific, `gpu-util` at 100% only means the monster is *awake*. It doesn't mean it's *feasting*. It could be awake but just nibbling on tiny snacks, leaving its immense digestive power completely untapped.
 
 To truly unleash the beast, we need to understand how it eats. The **Roofline Model** is our guide to monster nutrition.
 
