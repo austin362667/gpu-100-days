@@ -2,7 +2,7 @@
 
 Welcome to Day 3 of the GPU Challenge!
 
-On **Day 1**, we met our GPU monster and learned that we must feed it high-density, compute-bound food to keep it happy. On **Day 2**, we zoomed out to see the three-story building of an LLM system, understanding where our kernel-level work fits into the grand architecture.
+On [**Day 1**](./day-1.md), we met our GPU monster and learned that we must feed it high-density, compute-bound food to keep it happy. On [**Day 2**](./day-2.md), we zoomed out to see the three-story building of an LLM system, understanding where our kernel-level work fits into the grand architecture.
 
 Today, we roll up our sleeves and descend into the basement—the Kernel Layer. It's time to stop talking about theory and start writing the code that speaks directly to the GPU. We're going to write our very first CUDA kernel.
 
