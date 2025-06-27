@@ -103,7 +103,9 @@ Let's revisit the kernel launch syntax: `kernel<<<GridSize, BlockSize>>>()`.
 
 When you launch a kernel this way, you can imagine it as a "Shadow Clone Jutsu" (影分身之術) or "Dupli-Kate from Invincible". The kernel code is replicated for every single thread, and each clone executes it independently and in parallel.
 
-![Shadow Clone Jutsu" (影分身之術)](./assets/day-3-1.jpeg)
+<div align="center">
+<img src="assets/day-3-1.jpeg" alt="Shadow Clone Jutsu" width="200"/>
+</div>
 
 How does each clone know who it is? CUDA provides built-in variables:
 *   `threadIdx.x`: The ID of the current thread within its block.
@@ -132,8 +134,10 @@ __global__ void addVectors(float *a, float *b, float *c, int n) {
 ```
 Each thread computes `c[i] = a[i] + b[i]` for a different `i`. This is the essence of data parallelism on a GPU.
 
+<div align="center">
+<img src="assets/day-3-0.jpeg" alt="Image from "CUDA by Example", a fantastic visual of the grid/block/thread hierarchy" width="200"/>
+</div>
 
-![Image from "CUDA by Example", a fantastic visual of the grid/block/thread hierarchy)](./assets/day-3-0.jpeg)
 
 ### A Beautiful Example: The Julia Set
 
@@ -167,7 +171,10 @@ __global__ void kernel( unsigned char *ptr ) {
 
 By launching a 1000x1000 grid of threads, we calculate one million pixels simultaneously. The result is a beautiful, complex image generated in a fraction of the time it would take on a CPU.
 
-![Julia Set Image](./assets/day-3-2.jpeg)
+<div align="center">
+<img src="assets/day-3-2.jpeg" alt="The Outcome Image of Julia Set" width="200"/>
+</div>
+
 
 ### Final Thoughts & A Deeper Dive
 
@@ -188,4 +195,4 @@ Tomorrow, we will take our vector addition kernel and start optimizing it. We'll
 ### Suggested Readings
 
 1.  [**"CUDA by Example: An Introduction to General-Purpose GPU Programming" by Jason Sanders and Edward Kandrot**](https://www.amazon.com/CUDA-Example-Introduction-General-Purpose-Programming/dp/0131387685): The main inspiration for this post. A beginner-friendly, hands-on, and example-based CUDA introduction book. You don't have to understand every example in the book. Instead, just get a general sense of CUDA and general-purpose GPU computing.
-2.  [**"PyTorch internals" by Edward Yang**](https://blog.ezyang.com/2019/05/pytorch-internals/): As we progress, we’ll do a lot of indexing into strided in-memory representations of matrices. Edward’s post contains a clear, foundational explanation of how libraries like PyTorch use strides to represent tensors of any dimension. Understanding this is a superpower.
+2.  [**"PyTorch internals" by Edward Yang**](https://blog.ezyang.com/2019/05/pytorch-internals/): As we progress, we’ll do a lot of indexing into strided in-memory representations of matrices. Edward’s post contains a clear, foundational explanation of how libraries like PyTorch use strides to represent tensors of any dimension.

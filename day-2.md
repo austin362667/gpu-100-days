@@ -6,7 +6,9 @@ Large Language Models (LLMs) aren't just a single neural network. They're comple
 
 Think of an LLM system as a three-story building. Each floor has a different purpose, different tools, and different optimization strategies. Our GPU programming journey will take us from the basement (raw hardware) to the penthouse (distributed systems). Let's tour the building.
 
-![The three-story building](./assets/day-2-0.jpeg)
+<div align="center">
+<img src="assets/day-2-0.jpeg" alt="The three-story building" width="200"/>
+</div>
 
 ### The Three Layers of an LLM System
 

@@ -2,7 +2,11 @@
 
 Welcome to Day 1 of the GPU Challenge! Let's talk about how to tame the powerful GPU beast.
 
-![The cute green monster](./assets/day-1-0.jpeg)
+
+<div align="center">
+<img src="assets/day-1-0.jpeg" alt="day-1-0.jpeg" width="200"/>
+</div>
+
 
 My journey into GPU programming started with a classic mistake. I'd run my code, summon `nvidia-smi`, and see `gpu-util` at 100%. "Success!" I thought. "My GPU is working hard." But my code was still slow. Why?
 
