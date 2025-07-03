@@ -190,6 +190,8 @@ These are the absolute fundamentals. We're still just scratching the surface, an
 
 We know how to launch a kernel. But is it a *good* kernel? Is it memory-bound or compute-bound? How do we use the GPU's special memory hierarchies (like **shared memory**) to speed things up?
 
+In next few days, we'll start optimizing the kernel. We'll look at memory access patterns first and then introduce shared memory. Get ready!
+
 ### Suggested Readings
 
 1.  [**"CUDA by Example: An Introduction to General-Purpose GPU Programming" by Jason Sanders and Edward Kandrot**](https://www.amazon.com/CUDA-Example-Introduction-General-Purpose-Programming/dp/0131387685): The main inspiration for this post. A beginner-friendly, hands-on, and example-based CUDA introduction book. You don't have to understand every example in the book. Instead, just get a general sense of CUDA and general-purpose GPU computing.
