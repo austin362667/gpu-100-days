@@ -8,4 +8,4 @@
 
 - [Day 3: Writing Your First CUDA Kernel](./day-3.md)
 
-- [Day 3: The Art of Pointer Arithmetic](./day-4.md)
+- [Day 4: The Art of Pointer Arithmetic](./day-4.md)
