@@ -1,4 +1,4 @@
-# Day 2: The LLM System - A High-Level Blueprint
+# Day 2: A High-Level Overview of LLM Systems
 
 Welcome to Day 2 of the GPU Challenge! Before we dive into CUDA kernels and memory optimization, we need a clear view of the system we're building. 
 

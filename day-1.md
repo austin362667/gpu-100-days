@@ -1,4 +1,4 @@
-# Day 1: Your GPU is a Monster. Don't Let It Starve.
+# Day 1: Your GPU is a Monster. Don't Let It Starve
 
 Welcome to Day 1 of the GPU Challenge! Let's talk about how to tame the powerful GPU beast.
 

@@ -1,4 +1,4 @@
-# Day 4: The Art of Pointers - How Tensors Lay Themselves Out in Memory
+# Day 4: The Art of Pointer Arithmetic
 
 Welcome to Day 4 of the GPU Challenge!
 

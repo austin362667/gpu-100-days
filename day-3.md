@@ -1,4 +1,4 @@
-# Day 3: From Theory to Practice - Writing Your First CUDA Kernel
+# Day 3: Writing Your First CUDA Kernel
 
 Welcome to Day 3 of the GPU Challenge!
 
