@@ -188,11 +188,8 @@ These are the absolute fundamentals. We're still just scratching the surface, an
 
 ### What's Next
 
-We know how to launch a kernel. But is it a *good* kernel? Is it memory-bound or compute-bound? How do we use the GPU's special memory hierarchies (like shared memory) to speed things up?
-
-Tomorrow, we will take our vector addition kernel and start optimizing it. We'll look at memory access patterns and introduce **shared memory**, our first major tool for improving a kernel's operational intensity. Get ready to turn our celery-nibbling kernels into something a bit more nutritious for the beast.
+We know how to launch a kernel. But is it a *good* kernel? Is it memory-bound or compute-bound? How do we use the GPU's special memory hierarchies (like **shared memory**) to speed things up?
 
 ### Suggested Readings
 
 1.  [**"CUDA by Example: An Introduction to General-Purpose GPU Programming" by Jason Sanders and Edward Kandrot**](https://www.amazon.com/CUDA-Example-Introduction-General-Purpose-Programming/dp/0131387685): The main inspiration for this post. A beginner-friendly, hands-on, and example-based CUDA introduction book. You don't have to understand every example in the book. Instead, just get a general sense of CUDA and general-purpose GPU computing.
-2.  [**"PyTorch internals" by Edward Yang**](https://blog.ezyang.com/2019/05/pytorch-internals/): As we progress, we’ll do a lot of indexing into strided in-memory representations of matrices. Edward’s post contains a clear, foundational explanation of how libraries like PyTorch use strides to represent tensors of any dimension.
