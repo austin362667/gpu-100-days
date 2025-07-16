@@ -18,11 +18,11 @@ An LLM system can be broken into three layers, each addressing a distinct challe
 |-------|------------|-----------|---------------------|
 | **Kernel** | Scalar/Vector/Tile instructions | Micro-architecture optimization | CUDA C/C++, Triton, PTX, CUTLASS, Mojo |
 | **Graph** | Tensor primitives | Model graph optimization | PyTorch, TensorRT, ONNX, JAX, TinyGrad |
-| **System** | Sharding, Batching, Orchestration | Multi-GPU coordination | SGLang, vLLM, TensorRT-LLM, DeepSpeed, Megatron-LM |
+| **System** | Sharding, Batching, Orchestration | Multi-GPU Coordination & Communication | SGLang, vLLM, TensorRT-LLM, DeepSpeed, Megatron-LM |
 
 **1. The Kernel Layer: Raw GPU Execution**
 
-This is the basement—where code meets silicon. A kernel is the smallest unit of work that runs directly on the GPU's cores. Think matrix multiplication, attention computation, or element-wise operations. The focus is on maximizing performance at the micro-architecture level.
+This is the basement—where code meets silicon. A kernel is the smallest unit of work that runs directly on the **single GPU's cores**. Think matrix multiplication, attention computation, or element-wise operations. The focus is on maximizing performance at the micro-architecture level.
 
 *What's Happening?* Kernels are optimized to achieve high arithmetic intensity (computations per byte of memory accessed). Since memory access is slower than computation, the goal is to perform as much math as possible per data fetch—just like we learned with our GPU monster yesterday.
 
@@ -56,13 +56,13 @@ The graph layer employs several key optimization strategies:
 
 ---
 
-> **Personal Thoughts:** In theory, a “smart-enough” compiler could use hardware specs and algorithmic needs to auto‑generate high‑performance kernels, letting users work purely at the graph level. But no such compiler exists today, so researchers and engineers must continue hand‑tuning kernels—for the foreseeable future. I highly recommend **[Chris Lattner](https://www.nondot.org/sabre/)**’s blog series **[Democratizing AI Compute](https://www.modular.com/blog/democratizing-compute-part-1-deepseeks-impact-on-ai)** at [Modular](https://www.modular.com/mojo). Besides, cutting training and inference costs remains vital: GPU FLOPS keep outpacing HBM bandwidth growth, so manual effort to turn memory‑bound tasks into compute‑bound ones is still essential. Just a late-night thought I had—happy to hear any feedback or continue the discussion! Feel free to reach out.
+> **Personal Thoughts:** In theory, a “smart-enough” compiler could make use of hardware characteristics and algorithmic requirements to auto‑generate high‑performance kernels, letting users work purely at the higher levels. But no such perfect compiler for GPU exists today, so researchers and engineers still need to work on handcraft kernels for the foreseeable future. I highly recommend reading **[Chris Lattner](https://www.nondot.org/sabre/)**’s blog series **[Democratizing AI Compute](https://www.modular.com/blog/democratizing-compute-part-1-deepseeks-impact-on-ai)** at [Modular](https://www.modular.com/mojo) for more context. Besides, cutting training and inference costs remains vital: GPU FLOPS keep outpacing HBM bandwidth growth, so manual effort to turn memory‑bound tasks into compute‑bound ones is still essential. Just a late-night thought I had, happy to hear any feedback or continue the discussion! Feel free to reach out.
 
 ---
 
 **3. The System Layer: Multi-GPU Orchestration**
 
-This is the penthouse—where we coordinate entire clusters of GPUs. Massive models like GPT-4 or Claude exceed the capacity of a single GPU. This layer treats the model as a distributed program running across hundreds or thousands of GPUs.
+This is the penthouse—where we coordinate entire clusters of GPUs. Massive models like GPT-4 or Claude exceed the capacity of a single GPU. This layer treats the model as a **distributed program running across hundreds or thousands of GPUs**.
 
 *What's Happening?* The system manages compute, memory, and communication at scale. It's like conducting an orchestra where each musician (GPU) must play their part perfectly, and the conductor must ensure they're all synchronized.
 
@@ -101,19 +101,19 @@ Here's how the three layers interact in a complete LLM system:
 ```
 ┌─────────────────────────────────────────────────────────────┐  
 │                    SYSTEM LAYER                             │  
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐        │  
-│  │   GPU 1     │  │   GPU 2     │  │   GPU N     │        │  
-│  │ ┌─────────┐ │  │ ┌─────────┐ │  │ ┌─────────┐ │        │  
-│  │ │ GRAPH   │ │  │ │ GRAPH   │ │  │ │ GRAPH   │ │        │  
-│  │ │ LAYER   │ │  │ │ LAYER   │ │  │ │ LAYER   │ │        │  
-│  │ │┌───────┐│ │  │ │┌───────┐│ │  │ │┌───────┐│ │        │  
-│  │ ││KERNELS││ │  │ ││KERNELS││ │  │ ││KERNELS││ │        │  
-│  │ │└───────┘│ │  │ │└───────┘│ │  │ │└───────┘│ │        │  
-│  │ └─────────┘ │  │ └─────────┘ │  │ └─────────┘ │        │  
-│  └─────────────┘  └─────────────┘  └─────────────┘        │  
-│           │               │               │                │  
-│           └───────────────┼───────────────┘                │  
-│    Batching, Scheduling, Load Balancing, Communication     │  
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐          │  
+│  │   GPU 1     │  │   GPU 2     │  │   GPU N     │          │  
+│  │ ┌─────────┐ │  │ ┌─────────┐ │  │ ┌─────────┐ │          │  
+│  │ │ GRAPH   │ │  │ │ GRAPH   │ │  │ │ GRAPH   │ │          │  
+│  │ │ LAYER   │ │  │ │ LAYER   │ │  │ │ LAYER   │ │          │  
+│  │ │┌───────┐│ │  │ │┌───────┐│ │  │ │┌───────┐│ │          │  
+│  │ ││KERNELS││ │  │ ││KERNELS││ │  │ ││KERNELS││ │          │  
+│  │ │└───────┘│ │  │ │└───────┘│ │  │ │└───────┘│ │          │  
+│  │ └─────────┘ │  │ └─────────┘ │  │ └─────────┘ │          │  
+│  └─────────────┘  └─────────────┘  └─────────────┘          │  
+│           │               │               │                 │  
+│           └───────────────┼───────────────┘                 │  
+│    Batching, Scheduling, Load Balancing, Communication      │  
 └─────────────────────────────────────────────────────────────┘  
 ```
 
@@ -208,4 +208,4 @@ The foundation is set. Now let's start building.
 
 ---
 
-**Special Thanks:** A huge shoutout to my friend Chun-Mao ([Michael](https://www.mecoli.net/)) Lai at UCSD for introducing me to the amazing and well-structured UCSD CSE234 course.
+**Special Thanks:** A huge shoutout to my friend Chun-Mao ([Michael](https://www.mecoli.net/)) Lai at UCSD for introducing me to the amazing and well-structured UCSD [CSE234](https://hao-ai-lab.github.io/cse234-w25/) course.

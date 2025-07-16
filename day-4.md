@@ -91,5 +91,6 @@ We've now covered the basics of launching a kernel (Day 3) and the memory layout
 
 ### Suggested Readings
 
-1.  [**Interactive Stride Visualizer**](https://ezyang.github.io/stride-visualizer/index.html): A fantastic interactive tool by Edward Yang that helps you calculate stride access patterns and understand the pointer arithmetic involved.
-2.  [**The *Tensor* Part of "PyTorch Internals" by Edward Yang**](https://blog.ezyang.com/2019/05/pytorch-internals/): As we progress, we’ll do a lot of indexing into strided in-memory representations of matrices. Edward’s post contains a clear, foundational explanation of how libraries like PyTorch use strides to represent tensors of any dimension.
+1.  [**The *Tensor* Part of "PyTorch Internals" by Edward Yang**](https://blog.ezyang.com/2019/05/pytorch-internals/): As we progress, we’ll do a lot of indexing into strided in-memory representations of matrices. Edward’s post contains a clear, foundational explanation of how libraries like PyTorch use strides to represent tensors of any dimension.
+
+2.  [**Interactive Stride Visualizer**](https://ezyang.github.io/stride-visualizer/index.html): A fantastic interactive tool by Edward Yang that helps you calculate stride access patterns and understand the pointer arithmetic involved.
