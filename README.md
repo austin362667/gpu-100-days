@@ -11,3 +11,5 @@
 - [Day 4: The Art of Pointer Arithmetic](./day-4.md)
 
 - [Day 5: Tiling and Shared Memory](./day-5.md)
+
+- [Day 6: Combining adjacent accesses into single memory transaction](./day-6.md)
