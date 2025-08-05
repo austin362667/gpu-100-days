@@ -38,17 +38,17 @@ Here is the hierarchical structure in Markdown, based on the provided text:
 * **3. The Learning Phase**
     * Scores are used to update the LLM's parameters using algorithms like [Proximal Policy Optimization (PPO)](https://openai.com/index/openai-baselines-ppo/), encouraging the production of more desired outputs.
 
-### Mid-training and Cold-start Strategies
+### Mid-training / Cold-start Strategies
 
 To make LLM thinks, we need it keeps yapping!
 
 However, making models generate longer, more detailed responses isn't straightforward. It requires specialized training phases:
 
-**Cold-start/Mid-training**: This intermediate phase encourages models to produce more verbose outputs, creating a foundation for subsequent RL training. During this phase, researchers focus on increasing the model's propensity to "think out loud."
+This intermediate phase encourages models to produce more verbose outputs, creating a foundation for subsequent RL training. During this phase, researchers focus on increasing the model's propensity to "think out loud."
 
 ### How to filter out and amplify the good signals?
 
-**Oversampling**: Generate thousands (or as many as possible) of responses to the same input prompt and select the best ones—for example, by "highest score" or "self-consistency" (aka "majority voting"). This approach scales pretty well because:
+The key is **Oversampling**, by generating thousands (or as many as possible) of responses to the same input prompt and select the best ones—for example, by "highest score" or "self-consistency" (aka "majority voting"). This approach scales pretty well because:
 
 - Incorrect intermediate steps may not significantly impact final accuracy.
 - Step-wise verification is challenging to define and implement.
@@ -57,10 +57,10 @@ However, making models generate longer, more detailed responses isn't straightfo
 
 Analyzing response distributions provides valuable insights into model behavior and improvement opportunities.
 
-## The Power of Verifiability: The AI Version of [NP](https://en.wikipedia.org/wiki/NP_(complexity))
+## The Power of Verifiability: The AI Version of [ NP-complete](https://en.wikipedia.org/wiki/NP-completeness))
 
 ### "If you have the target, you can optimize"
-A critical success factor for RL implementation is the ability to verify output quality. The **"asymmetry of verification"** principle states that for many tasks, checking a solution is far simpler than generating it. Examples:
+A critical success factor for RL implementation is the ability to verify output quality. The **["asymmetry of verification"](https://www.jasonwei.net/blog/asymmetry-of-verification-and-verifiers-law)** principle states that for many tasks, checking a solution is far simpler than generating it. Examples:
 - Verifying a Sudoku solution vs. solving the puzzle from scratch
 - Checking mathematical proof correctness vs. discovering the proof
 - Validating code functionality vs. writing the code
