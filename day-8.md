@@ -43,7 +43,7 @@ To manage this complex interplay, two primary architectural patterns have emerge
     |                          |      |                         |
     |  +-------------------+   |      |   +-----------------+   |
     |  | Generates         |   |      |   | Updates         |   |
-    |  | experience data   | ------> |   | model parameters|   |
+    |  | experience data   | ------>  |   | model parameters|   |
     |  +-------------------+   |      |   +-----------------+   |
     |                          |      |                         |
     +--------------------------+      +-------------------------+
@@ -55,27 +55,35 @@ As an engineer designing an RL framework, you're faced with a series of critical
 
 *   **Challenge 1: Resource Management & Synchronization:** How do you efficiently manage resources when rollout is memory-bound and training is compute-bound? How do you synchronize model parameters between these distinct phases without creating bottlenecks or stalls? Separated systems promise better utilization but require sophisticated, low-latency mechanisms for data and parameter transfer.
 
-*   **Challenge 2: The Framework Maze:** The LLM ecosystem is a vibrant but fragmented landscape of training frameworks (Megatron-LM, DeepSpeed, FSDP) and inference engines (vLLM, SGLang). Each combination presents a unique integration challenge. A modular approach is more future-proof but requires designing complex yet clean interfaces.
+*   **Challenge 2: The Dataflow Maze:** The LLM ecosystem is a vibrant but fragmented landscape of training frameworks (Megatron-LM, DeepSpeed, FSDP) and inference engines (vLLM, SGLang). Each combination presents a unique integration challenge. A modular approach is more future-proof but requires designing complex yet clean interfaces.
 
-*   **Challenge 3: The Asynchronicity Puzzle:** Rollouts can have wildly different completion times, especially with AI agents generating complex outputs. Waiting for an entire batch to finish creates "bubbles" of idle resources. A dynamic, asynchronous system that processes data at a finer granularity (per-sample or micro-batch) is more efficient but requires a robust data management system, potentially involving centralized queues or message brokers.
+*   **Challenge 3: The Asynchronicity & Granularity:** Rollouts can have wildly different completion times, especially with AI agents generating complex outputs. Waiting for an entire batch to finish creates "bubbles" of idle resources. A dynamic, asynchronous system that processes data at a finer granularity (per-sample or micro-batch) is more efficient but requires a robust data management system, potentially involving centralized queues or message brokers.
 
 ---
 
 ### The Long-Tail Problem with Partial Rollouts
 
-Take [Slime](https://github.com/THUDM/slime/) for case study.
+Let's make this concrete. Take [Slime](https://github.com/THUDM/slime/) for case study.
 
-Let's make this concrete. In on-policy RLHF, the rollout phase can easily consume most of the total training time. A major reason for this is the **"long-tail problem"**: the entire cluster of GPUs sits idle, waiting for a few unusually long sequences to finish generating. This slashes utilization and throttles the entire training cycle.
+The rollout phase often dominates the overall training time in on-policy RLHF. Response generation time is highly variable, and a few unusually long sequences can stall the entire process. As a result, many GPUs sit idle, waiting for the slowest rollouts to complete, results in cluster underutilization and slowing down the training loop.
 
-To address this, implementin a **Partial Rollout** mechanism in is a valid trick. The core idea is to eliminate the waiting period through over-sampling and dynamic termination.
+A practical solution to this issue is implementing a **Partial Rollout** strategy, also known as **Early Stopping. This system-level optimization reduces idle time and boosts throughput.
 
-Here’s how it works:
+How Partial Rollout Works:
 
-1.  **Over-sample:** We launch more rollout requests than the training step strictly needs. For instance, if the trainer requires a `rollout_batch_size` of 32, we might speculatively start an `over_sampling_batch_size` of 64.
-2.  **Terminate Early:** As soon as the target number of samples (32 in this case) is collected, the system sends an abort signal to the SGLang inference engine.
-3.  **Collect and Reuse:** SGLang immediately stops the remaining in-progress generation tasks. Crucially, these half-completed trajectories are not discarded. They are stored in a buffer and seamlessly reused in the next iteration, continuing from where they left off.
+**1. Over-Sample Proactively**
 
-Compared to other solutions, Partial Rollout is a native, lightweight, and less intrusive optimization. It’s a powerful example of how system-level thinking can directly translate to better models and faster training.
+Instead of generating exactly the number of rollouts needed per training step, the system launches more than necessary. For example, if the trainer needs 8 samples (`rollout_batch_size = 8`), the inference engine might speculatively start 64 rollouts (`over_sampling_batch_size = 64`).
+
+**2. Terminate Once Enough is Collected**
+
+As soon as 8 valid rollouts are completed, the system sends an early-stop signal to the inference engine (e.g., SGLang), aborting the rest of the ongoing generations.
+
+**3. Recycle Partial Trajectories**
+
+Importantly, the partially completed rollouts aren’t wasted. They are stored in a buffer and resumed in the next iteration, continuing from where they left off.
+
+This mechanism is easy to integrate into existing RLHF pipelines without too much modifications. It’s a great example of how thoughtful engineering trick can lead to faster training and more efficient resource use.
 
 ---
 
@@ -83,10 +91,11 @@ Compared to other solutions, Partial Rollout is a native, lightweight, and less 
 
 The challenges are clear, but how do we build systems that last? The LLM space is evolving at a breakneck pace. Any framework built today must be able to adapt to algorithms, models, and hardware we haven't even conceived of yet. Thinking from first principles, here are some core tenets to guide the design:
 
-*   **Principle 1: Embrace Heterogeneity.** Don't assume uniform compute. Your framework should gracefully handle a mix of high-memory GPUs for inference, compute-dense accelerators for training, and even CPUs for reward models. Design abstractions that make hardware differences an implementation detail, not a user-facing problem.
-*   **Principle 2: Make Everything Observable.** In a complex distributed system, visibility is non-negotiable. You need to know more than "training is 47% complete." You need to see queue depths, GPU utilization, network latencies, and reward computation bottlenecks in real-time.
+*   **Principle 1: Keep Interfaces Simple.** The more complex your inter-service APIs, the harder it is to swap out components or add new capabilities. Simple, well-defined, and stable interfaces (like a `put`/`get` semantic for data exchange) are your best defense against future complexity. Besides, It's easier to leverage **from** or **to** each other's work.
+*   **Principle 2: Embrace Heterogeneity.** Don't assume uniform compute. Your framework should gracefully handle a mix of high-memory GPUs for inference, compute-dense accelerators for training, and even CPUs for reward models. Design abstractions that make hardware differences an implementation detail, not a user-facing problem.
 *   **Principle 3: Prepare for Failure.** Distributed systems fail. It's a fact of life. A four-hour training run should not restart from scratch because one node hiccuped. Build in robust checkpointing, graceful degradation, and automatic recovery from the start.
-*   **Principle 4: Keep Interfaces Simple.** The more complex your inter-service APIs, the harder it is to swap out components or add new capabilities. Simple, well-defined, and stable interfaces (like a `put`/`get` semantic for data exchange) are your best defense against future complexity. Besides, It's easier to leverage **from** or **to** each other's work.
+*   **Principle 4: Make Everything Observable.** In a complex distributed system, visibility is non-negotiable. You need to know more than "training is 47% complete." You need to see queue depths, GPU utilization, network latencies, and reward computation bottlenecks in real-time.
+
 
 ### The Bottom Line
 
@@ -109,9 +118,11 @@ However, one thing is certain: the simple, monolithic approach does not scale fo
 
 * [AReaL](https://github.com/inclusionAI/AReaL)
 
+* [Next RL Framework](Suggest one or fill your own!)
+
 
 ### Suggested Readings
 
-* [A Great Slide of VeRL by Yuxuan Tong](https://tongyx361.github.io/blogs/posts/verl-intro/)
+* [A Great Slide of Introducing VeRL by Yuxuan Tong](https://tongyx361.github.io/blogs/posts/verl-intro/)
 
-* [A Survey of Memory Management in RL for Large Language Models by Biao He](https://hebiao064.github.io/rl-memory-management)
+* [An Optimization Journey of Memory Management in VeRL and SGLang by Biao He](https://hebiao064.github.io/rl-memory-management)
