@@ -1,4 +1,4 @@
-# Day 6: Combining adjacent accesses into single memory transaction
+# Day 6: Global Memory coalescing
 
 Welcome to Day 6 of the GPU Challenge!
 

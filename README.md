@@ -2,14 +2,16 @@
 
 ### Learn You a GPU for Great Good (in public)!
 
-- [Day 1: Your GPU is a Monster. Don't Let It Starve](./day-1.md)
+- [Day 1: Your GPU is a Monster. Don't Let It Starve](./day-1.md) -> Max out every part of the GPU (a napkin math first)
 
-- [Day 2: A High-Level Overview of LLM Systems](./day-2.md)
+- [Day 2: A High-Level Overview of LLM Systems](./day-2.md) -> A broad overview without getting lost in technical details
 
-- [Day 3: Writing Your First CUDA Kernel](./day-3.md)
+- [Day 3: Writing Your First CUDA Kernel](./day-3.md) -> Introduction to GPU programming with a simple CUDA kernel
 
-- [Day 4: The Art of Pointer Arithmetic](./day-4.md)
+- [Day 4: The Art of Pointer Arithmetic](./day-4.md) -> The underlying memory layout of tensor representiaobn
 
-- [Day 5: Tiling and Shared Memory](./day-5.md)
+- [Day 5: Tiling and Shared Memory](./day-5.md) ->  Dividing the matrix into blocks that fit within the cache
 
-- [Day 6: Combining adjacent accesses into single memory transaction](./day-6.md)
+- [Day 6: Global Memory coalescing](./day-6.md) -> Combining adjacent accesses into single memory transaction
+
+- [Day 7: RL in LLM Post-training](./day-7.md) -> This is the way LLMs can do reasoning
