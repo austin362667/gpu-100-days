@@ -103,6 +103,6 @@ The journey toward more capable AI systems is far from over. By embracing reinfo
 
 - [Thinking in Large Language Models](https://lilianweng.github.io/posts/2025-05-01-thinking/) - A high signal-to-noise blog with thoroughly formulated math equations regarding advanced ML researches by Lilian Weng at OpenAI. Good for people prefer paper-style explanations.
 
-- [Asymmetry of Verification and Verifiers Law](https://www.jasonwei.net/blog/asymmetry-of-verification-and-verifiers-law) - Jason Wei, GOAT AI researcher at OpenAI, famous for works of `o1` and `deep research`.
+- [Asymmetry of Verification and Verifiers Law](https://www.jasonwei.net/blog/asymmetry-of-verification-and-verifiers-law) - A valid manifesto by Jason Wei, GOAT AI researcher at OpenAI, famous for works of `o1` and `deep research`.
 
-- [Scaling Reinforcement Learning Environments](https://semianalysis.com/2025/06/08/scaling-reinforcement-learning-environments-reward-hacking-agents-scaling-data/) - SemiAnalysis, the best, and diligently-run newsletter of SOTA AI research and AI infra led by Dylan Patel.
+- [Scaling Reinforcement Learning Environments](https://semianalysis.com/2025/06/08/scaling-reinforcement-learning-environments-reward-hacking-agents-scaling-data/) - By emiAnalysis, the world's best, and diligently-run newsletter of SOTA AI research and AI infra led by Dylan Patel.
