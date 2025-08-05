@@ -42,7 +42,7 @@ Here is the hierarchical structure in Markdown, based on the provided text:
 
 To make LLM thinks, we need it keeps yapping!
 
-However, making models generate longer, more detailed responses isn't straightforward. It requires specialized training phases:
+However, making models generate longer, more detailed responses isn't straightforward. It requires specialized training phases: mid-training.
 
 This intermediate phase encourages models to produce more verbose outputs, creating a foundation for subsequent RL training. During this phase, researchers focus on increasing the model's propensity to "think out loud."
 
