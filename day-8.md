@@ -61,13 +61,13 @@ As an engineer designing an RL framework, you're faced with a series of critical
 
 ---
 
-### The Long-Tail Problem with Partial Rollouts
+### The Long-Tail Problem and Solution
 
 Let's make this concrete. Take [Slime](https://github.com/THUDM/slime/) for case study.
 
 The rollout phase often dominates the overall training time in on-policy RLHF. Response generation time is highly variable, and a few unusually long sequences can stall the entire process. As a result, many GPUs sit idle, waiting for the slowest rollouts to complete, results in cluster underutilization and slowing down the training loop.
 
-A practical solution to this issue is implementing a **Partial Rollout** strategy, also known as **Early Stopping. This system-level optimization reduces idle time and boosts throughput.
+A practical solution to this issue is implementing a **Partial Rollout** strategy, also known as **Early Stopping**. This system-level optimization reduces idle time and boosts throughput.
 
 How Partial Rollout Works:
 
