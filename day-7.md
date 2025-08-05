@@ -42,13 +42,13 @@ Here is the hierarchical structure in Markdown, based on the provided text:
 
 To make LLM thinks, we need it keeps yapping!
 
-However, making models generate longer, more detailed responses isn't straightforward. It requires specialized training phases: mid-training.
+However, making models generate longer, more detailed responses isn't straightforward. It requires specialized training phases: **Mid Training**.
 
 This intermediate phase encourages models to produce more verbose outputs, creating a foundation for subsequent RL training. During this phase, researchers focus on increasing the model's propensity to "think out loud."
 
 ### How to filter out and amplify the good signals?
 
-The key is **Oversampling**, by generating thousands (or as many as possible) of responses to the same input prompt and select the best ones—for example, by "highest score" or "self-consistency" (aka "majority voting"). This approach scales pretty well because:
+The key is **oversampling**, by generating thousands (or as many as possible) of responses to the same input prompt and select the best ones—for example, by "highest score" or "self-consistency" (aka "majority voting"). This approach scales pretty well because:
 
 - Incorrect intermediate steps may not significantly impact final accuracy.
 - Step-wise verification is challenging to define and implement.
@@ -60,7 +60,9 @@ Analyzing response distributions provides valuable insights into model behavior 
 ## The Power of Verifiability: The AI Version of [ NP-complete](https://en.wikipedia.org/wiki/NP-completeness))
 
 ### "If you have the target, you can optimize"
-A critical success factor for RL implementation is the ability to verify output quality. The **["asymmetry of verification"](https://www.jasonwei.net/blog/asymmetry-of-verification-and-verifiers-law)** principle states that for many tasks, checking a solution is far simpler than generating it. Examples:
+A critical success factor for RL implementation is the ability to verify output quality. The **["asymmetry of verification"](https://www.jasonwei.net/blog/asymmetry-of-verification-and-verifiers-law)** principle states that for many tasks, checking a solution is far simpler than generating it. 
+
+Examples:
 - Verifying a Sudoku solution vs. solving the puzzle from scratch
 - Checking mathematical proof correctness vs. discovering the proof
 - Validating code functionality vs. writing the code
@@ -77,10 +79,8 @@ For open-ended tasks where defining good reward functions is challenging, innova
 
 An exciting aspect of this field is the **symbiotic relationship** between RL and LLMs. As models become more capable through RL, they can improve the RL process itself:
 
-- More advanced LLMs serve as more sophisticated "judges"
-- Improved models provide more accurate and nuanced feedback
-- This accelerates the improvement of subsequent model generations
-- Creates a positive feedback loop driving rapid advancement
+- More advanced LLMs serve as more sophisticated "judges", so that improved models provide more accurate and nuanced feedback.
+- This accelerates the improvement of subsequent model generations by leveraging positive feedback loop.
 
 Just as we scale reasoning models, the improved models can serve as better verifiers for future training cycles.
 
