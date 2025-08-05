@@ -98,4 +98,4 @@ The journey toward more capable AI systems is far from over. By embracing reinfo
 
 - [Asymmetry of Verification and Verifiers Law](https://www.jasonwei.net/blog/asymmetry-of-verification-and-verifiers-law) - A valid manifesto by Jason Wei, GOAT AI researcher at OpenAI, famous for works of `o1` and `deep research`.
 
-- [Scaling Reinforcement Learning Environments](https://semianalysis.com/2025/06/08/scaling-reinforcement-learning-environments-reward-hacking-agents-scaling-data/) - By emiAnalysis, the world's best, and diligently-run newsletter of SOTA AI research and AI infra led by Dylan Patel.
+- [Scaling Reinforcement Learning Environments](https://semianalysis.com/2025/06/08/scaling-reinforcement-learning-environments-reward-hacking-agents-scaling-data/) - By semiAnalysis, the world's best, and diligently-run newsletter of SOTA AI research and AI infra led by Dylan Patel.
