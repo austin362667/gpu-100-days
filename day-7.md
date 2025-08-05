@@ -22,28 +22,21 @@ Reinforcement Learning offers a more dynamic and adaptive learning process. In t
 - **Breaking the Data Wall**: RL generates vast amounts of training data, effectively addressing the "data wall" researchers face in pre-training. As the model interacts with its environment and receives feedback, it continuously creates new and diversified learning examples.
 
 - **Enhanced Reasoning**: This approach significantly improves reasoning capabilities, particularly for well-defined intellectual tasks with verifiable answers like coding quizzes(e.g., [LeetCode](https://en.wikipedia.org/wiki/LeetCode)) or standardized math tests(e.g., [AIME](https://en.wikipedia.org/wiki/American_Invitational_Mathematics_Examination)).
+Here is the hierarchical structure in Markdown, based on the provided text:
 
-## How RL Works with LLMs
-
-The application of RL to LLMs involves three key stages:
-
-### 1. The Rollout Phase
-The LLM generates one or more responses to a given prompt.
-
-### 2. The Scoring Phase
-Generated responses are evaluated and assigned scores through methods that may include, but are not limited to:
-
-#### 1. **Reinforcement Learning from Human Feedback (RLHF)**
-Human labellers rank different model-generated responses.
-
-#### 2. **Rule-based Verifiers**: 
-For tasks with clear right/wrong answers (math, coding), predefined rules assess response correctness.
-
-#### 3. **Reward Models**: 
-For more open-ended tasks, a separate reward model is used to predict response quality. This model may be another generative model, as it has an effect equivalent to that of a regression model.
-
-### 3. The Learning Phase
-Scores are used to update the LLM's parameters using algorithms like [Proximal Policy Optimization (PPO)](https://openai.com/index/openai-baselines-ppo/), encouraging the production of more desired outputs.
+**How RL Works with LLMs**
+* **1. The Rollout Phase**
+    * The LLM generates one or more responses to a given prompt.
+* **2. The Scoring Phase**
+    * Generated responses are evaluated and assigned scores through methods that may include, but are not limited to:
+        * **1. Reinforcement Learning from Human Feedback (RLHF)**
+            * Human labellers rank different model-generated responses.
+        * **2. Rule-based Verifiers**
+            * For tasks with clear right/wrong answers (math, coding), predefined rules assess response correctness.
+        * **3. Reward Models**
+            * For more open-ended tasks, a separate reward model is used to predict response quality. This model may be another generative model, as it has an effect equivalent to that of a regression model.
+* **3. The Learning Phase**
+    * Scores are used to update the LLM's parameters using algorithms like [Proximal Policy Optimization (PPO)](https://openai.com/index/openai-baselines-ppo/), encouraging the production of more desired outputs.
 
 ### Mid-training and Cold-start Strategies
 
