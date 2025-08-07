@@ -57,7 +57,7 @@ The key is **oversampling**, by generating thousands (or as many as possible) of
 
 Analyzing response distributions provides valuable insights into model behavior and improvement opportunities.
 
-## The Power of Verifiability: The AI Version of [ NP-complete](https://en.wikipedia.org/wiki/NP-completeness))
+## The Power of Verifiability: The AI Version of [NP-complete](https://en.wikipedia.org/wiki/NP-completeness)
 
 ### "If you have the target, you can optimize"
 A critical success factor for RL implementation is the ability to verify output quality. The **["asymmetry of verification"](https://www.jasonwei.net/blog/asymmetry-of-verification-and-verifiers-law)** principle states that for many tasks, checking a solution is far simpler than generating it. 
