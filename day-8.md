@@ -124,8 +124,10 @@ However, one thing is certain: the simple, monolithic approach does not scale fo
 
 ### Suggested Readings
 
-* [ICLR 2025 Expo Talk Materials about Latest Post-training Techniques and Programming Guide for VeRL](https://github.com/eric-haibin-lin/verl-community/tree/main/iclr25)
-
 * [A Great Slide of Introducing VeRL by Yuxuan Tong](https://tongyx361.github.io/blogs/posts/verl-intro/)
 
+* [ICLR 2025 Expo Talk Materials about Latest Post-training Techniques and Programming Guide for VeRL](https://github.com/eric-haibin-lin/verl-community/tree/main/iclr25)
+
 * [An Optimization Journey of Memory Management in VeRL and SGLang by Biao He](https://hebiao064.github.io/rl-memory-management)
+
+* [Slime Framework Announce Blog on LMSYS ORG](https://lmsys.org/blog/2025-07-09-slime/)
