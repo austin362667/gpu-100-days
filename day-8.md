@@ -61,7 +61,7 @@ As an engineer designing an RL framework, you're faced with a series of critical
 
 ---
 
-### The Long-Tail Problem and Solution
+### The Long-Tail Problem and the Solution
 
 Let's make this concrete. Take [Slime](https://github.com/THUDM/slime/) for case study.
 
@@ -81,7 +81,7 @@ As soon as 8 valid rollouts are completed, the system sends an early-stop signal
 
 **3. Recycle Partial Trajectories**
 
-Importantly, the partially completed rollouts aren’t wasted. They are stored in a buffer and resumed in the next iteration, continuing from where they left off.
+Importantly, the partially completed rollouts aren’t wasted. They are stored in a buffer and resumed in the next iteration, continuing from where they left off. Although, this could lead to issues of being 'too off-policy' if the system doesn't synchronize weights properly.
 
 This mechanism is easy to integrate into existing RLHF pipelines without too much modifications. It’s a great example of how thoughtful engineering trick can lead to faster training and more efficient resource use.
 
@@ -93,7 +93,8 @@ The challenges are clear, but how do we build systems that last? The LLM space i
 
 *   **Principle 1: Keep Interfaces Simple.** The more complex your inter-service APIs, the harder it is to swap out components or add new capabilities. Simple, well-defined, and stable interfaces (like a `put`/`get` semantic for data exchange) are your best defense against future complexity. Besides, It's easier to leverage **from** or **to** each other's work.
 *   **Principle 2: Embrace Heterogeneity.** Don't assume uniform compute. Your framework should gracefully handle a mix of high-memory GPUs for inference, compute-dense accelerators for training, and even CPUs for reward models. Design abstractions that make hardware differences an implementation detail, not a user-facing problem.
-*   **Principle 3: Prepare for Failure.** Distributed systems fail. It's a fact of life. A four-hour training run should not restart from scratch because one node hiccuped. Build in robust checkpointing, graceful degradation, and automatic recovery from the start.
+*   **Principle 3: Prepare for Failure.** Distributed systems fail. It's a fact of life. A four-hour training run should not restart from scratch because one node hiccuped. Build in robust checkpointing, graceful degradation, and automatic recovery from the start. From a distributed systems perspective, I’ve noticed that many emerging RL frameworks are using [Ray](https://www.ray.io/) as their backbone. The [Ray community](https://github.com/ray-project/ray) is actively working to meet these demands, like, by enhancing support for more GPU-friendly object storage and scheduling strategy.
+
 *   **Principle 4: Make Everything Observable.** In a complex distributed system, visibility is non-negotiable. You need to know more than "training is 47% complete." You need to see queue depths, GPU utilization, network latencies, and reward computation bottlenecks in real-time.
 
 
@@ -122,6 +123,8 @@ However, one thing is certain: the simple, monolithic approach does not scale fo
 
 
 ### Suggested Readings
+
+* [ICLR 2025 Expo Talk Materials about Latest Post-training Techniques and Programming Guide for VeRL](https://github.com/eric-haibin-lin/verl-community/tree/main/iclr25)
 
 * [A Great Slide of Introducing VeRL by Yuxuan Tong](https://tongyx361.github.io/blogs/posts/verl-intro/)
 
