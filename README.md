@@ -12,7 +12,7 @@
 
 - [Day 5: Tiling and Shared Memory](./day-5.md) ->  Dividing the matrix into blocks that fit within the cache
 
-- [Day 6: Global Memory coalescing](./day-6.md) -> Combining adjacent accesses into single memory transaction
+- [Day 6: Global Memory Coalescing](./day-6.md) -> Combining adjacent accesses into single memory transaction
 
 - [Day 7: RL in LLM Post-training](./day-7.md) -> This is the way LLMs can do reasoning
 
