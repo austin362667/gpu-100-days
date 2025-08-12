@@ -2,7 +2,7 @@
 
 Welcome to Day 9 of our GPU Challenge!
 
-Following up on the introduction to the RL for LLM post-training at [**Day 8**](./day-8.md), today is all about getting our hands dirty. I'm logging my experience setting up an LLM post-training experiment using [Slime](https://github.com/THUDM/slime), a powerful framework for reinforcement learning (RL) scaling. Our goal is to post-train the `Qwen3-4B` model on a hefty 8x A100 GPU machine.
+Following up on the introduction to the RL for LLM post-training at [**Day 8**](./day-8.md), today is all about getting our hands dirty. I'm logging my experience setting up an LLM post-training experiment using [Slime](https://github.com/THUDM/slime), a simple yet powerful framework for reinforcement learning (RL) scaling. Our goal is to post-train the `Qwen3-4B` model on a hefty 8x A100 GPU machine.
 
 ### What's Ray Doing?
 
