@@ -18,4 +18,4 @@
 
 - [Day 8: RL Framework Design Space](./day-8.md) -> Discuss RL infra form factor
 
-- [Day 9: Setting Up RL Framework](./day-9.md) -> The logs of me playing Slime
+- [Day 9: Setting Up RL Infra](./day-9.md) -> The logs of me playing Slime
