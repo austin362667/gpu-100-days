@@ -96,7 +96,7 @@ The training is now running on the remote 8x A100 machine, inside a Docker conta
 Here’s the command I ran on my local laptop's terminal:
 
 ```bash
-ssh -L 8265:localhost:8265 -N ubuntu@xxx.xxx.xx.x # Repalce with your onw GPU instance IP
+ssh -L 8265:localhost:8265 -N ubuntu@xxx.xxx.xx.x # Repalce with your own GPU instance IP
 ```
 
 Let's break that down:
