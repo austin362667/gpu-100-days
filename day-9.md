@@ -36,7 +36,7 @@ pip install -e .
 
 ### Step 3: Preparing Models and Datasets
 
-We can't train without data and a base model. We'll use `huggingface-cli` to download everything we need. First, you'll need to log in with an access token from your Hugging Face account.
+We can't train without data and a base model. We'll use `huggingface-cli` to download everything we need. First, you'll need to log in with an [access token](https://huggingface.co/settings/tokens) from your Hugging Face account.
 
 ```bash
 hf auth login
@@ -44,7 +44,7 @@ hf auth login
 
 With authentication sorted, we download the `Qwen3-4B` model checkpoint, along with the training and evaluation datasets.
 
-Dataset HuggingFace Page: [AIME-2024](https://huggingface.co/datasets/zhuzilin/aime-2024)
+Dataset Hugging Face Page: [AIME-2024](https://huggingface.co/datasets/zhuzilin/aime-2024)
 
 ```bash
 # Download the Qwen3-4B model checkpoint
@@ -107,7 +107,7 @@ Let's break that down:
 The flow of the connection looks like this:
 `Your Laptop's Browser (localhost:8265) → SSH Tunnel → Remote VM → Docker Container's Ray Dashboard (Port 8265)`
 
-With the tunnel active, I can simply open a web browser on my laptop and navigate to `http://localhost:8265`. Voila! The Ray dashboard appears, and I can monitor the resource usage, logs, and progress of our LLM post-training job.
+With the tunnel active, I can simply open a web browser on my laptop and navigate to `http://localhost:8265`. There it is! The Ray dashboard appears, and I can monitor the resource usage, logs, and progress of our LLM post-training job.
 
 
 
