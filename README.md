@@ -17,3 +17,5 @@
 - [Day 7: RL in LLM Post-training](./day-7.md) -> This is the way LLMs can do reasoning
 
 - [Day 8: RL Framework Design Space](./day-8.md) -> Discuss RL infra form factor
+
+- [Day 8: Setting Up RL Framework](./day-8.md) -> The logs of me playing Slime
