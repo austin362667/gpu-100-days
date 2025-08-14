@@ -19,3 +19,6 @@
 - [Day 8: RL Framework Design Space](./day-8.md) -> Discuss RL infra form factor
 
 - [Day 9: Setting Up RL Infra](./day-9.md) -> The logs of me playing [Slime](https://github.com/THUDM/slime)
+
+- [Day 10: Notes from VeRL Talk](./day-10.md) -> 
+A write-up of Haibin Lin’s introduction and Q&A on [VeRL](https://github.com/volcengine/verl) at PyTorch Webinar
