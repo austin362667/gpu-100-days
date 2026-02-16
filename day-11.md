@@ -1,6 +1,8 @@
-# Day 11: Why You Can't Just Cast to Low Precision
+# Day 11: Don't Just `.cast()`
 
 Welcome to Day 11 of the GPU Challenge!
+
+### Why You Can't Just Cast to Low Precision
 
 Today I'm diving into [mxfp8, mxfp4, and nvfp4 formats in PyTorch](https://www.youtube.com/watch?v=Up0EfrudTSQ). It's a great primer from the Meta PyTorch team on how to actually use these new low-precision formats.
 

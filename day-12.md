@@ -1,5 +1,7 @@
 # Day 12: The Missing 10 Bits
 
+Welcome to Day 12 of the GPU Challenge!
+
 ### Reverse Engineering NVIDIA’s Tensor Core Precision
 
 NVIDIA Hopper (H100) architecture often highlight **FP8 Matrix Multiplication with FP32 Accumulation**. However, recent [reverse engineering](https://pytorch.org/blog/some-matrix-multiplication-engines-are-not-as-accurate-as-we-thought/) by PyTorch team reveals that the "FP32" used inside the Tensor Core is actually not works as it claimed.

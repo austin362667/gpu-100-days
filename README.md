@@ -23,7 +23,7 @@
 - [Day 10: Notes from VeRL Talk](./day-10.md) -> 
 A write-up of Haibin Lin’s introduction and Q&A on [VeRL](https://github.com/volcengine/verl) at PyTorch Webinar
 
-- [Day 11: Why You Can't Just Cast to Low Precision](./day-11.md) -> The note of learning from video: [
+- [Day 11: Don't Just `.cast()`](./day-11.md) -> The note of learning from video: [
 mxfp8, mxfp4, nvfp4 formats and applications in PyTorch - Vasily Kuznetsov & Driss Guessous, Meta](https://www.youtube.com/watch?v=Up0EfrudTSQ)
 
 - [Day 12: The Missing 10 Bits](./day-12.md) -> The note of learning from blog: [Some Matrix Multiplication Engines Are Not As Accurate As We Thought](https://pytorch.org/blog/some-matrix-multiplication-engines-are-not-as-accurate-as-we-thought/)
