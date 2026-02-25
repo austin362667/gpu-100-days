@@ -26,11 +26,20 @@ The solution is **Scaling**. You need to normalize the data to fit the window. I
 
 ### Micro-Scaling (MX)
 
-The industry is moving toward [Micro-scaling (MX) formats](https://arxiv.org/abs/2310.10537).
+The industry is moving toward **Micro-scaling (MX) formats** introduced in [paper](https://arxiv.org/abs/2310.10537).
 
-Instead of a single scale factor for an entire tensor (Per-Tensor) or row (Per-Row), microscaling divides the tensor into tiny blocks (e.g., 32 elements). It calculates a max value for just that block and scales the data to fit into the limited range (e.g., FP4's 16 representable values).
+We've actually had block quantization for a while (think GPTQ, AWQ, or GGUF formats). So why the massive industry push for the OCP Microscaling (MX) standard? It comes down to hardware support and standardization.
+
+Earlier block-quantized GEMMs were primarily a memory-saving software trick. Standard GPUs didn't have the circuitry to multiply 4-bit blocks directly, so they had to fetch the block, decompress it back to FP16 in the registers, and then do the math.
+
+But with the new MX standard, let's take NVIDIA Blackwell as an example: It has Tensor Cores physically wired to ingest MX blocks and compute the math natively without unpacking to FP16, drastically speeding up raw compute.
+
+With MX scaling, instead of a single scale factor for an entire tensor (Per-Tensor) or row (Per-Row), microscaling divides the tensor into tiny blocks (e.g., 32 elements). It calculates a max value for just that block and scales the data to fit into the limited range (e.g., FP4's 16 representable values).
 
 The scales for MX formats are stored in a unique type that consists solely of 8 exponent bits (no mantissa, no sign). This allows for efficient power-of-two scaling that stretches or compresses the data distribution to fit the target format.
+
+
+> side note: OCP MX is a standardized bit-level layout agreed upon by many companies, so it's vendor-specific formats.
 
 ### Fuse Scaling Kernel 
 
