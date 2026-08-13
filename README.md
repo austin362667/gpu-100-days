@@ -1,3 +1,5 @@
+
+
 # MLSys Learning Notes
 
 ### Learn You a MLSys for Great Good (in public)!
@@ -10,7 +12,7 @@
 
 - [Writing Your First CUDA Kernel](./day-3.md) -> Introduction to GPU programming with a simple CUDA kernel
 
-- [The Art of Pointer Arithmetic](./day-4.md) -> The underlying memory layout of tensor representiaobn
+- [The Art of Pointer Arithmetic](./day-4.md) -> The underlying memory layout of tensor representation
 
 - [Tiling and Shared Memory](./day-5.md) ->  Dividing the matrix into blocks that fit within the cache
 
