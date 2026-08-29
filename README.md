@@ -30,3 +30,23 @@
 ### Speculative Decoding
 
 - [Where Does the Speed-up Come From in Speculative Decoding?](./speculative-decoding/where-does-the-speed-up-come-from-in-speculative-decoding.md)
+
+### On-policy Distillation
+
+> WIP..
+
+[Multi-Teachr OPD](https://yumoxu.notion.site/multi-teacher-on-policy-distillation)
+
+[OPD Video by Jia-Bin Huang](https://www.youtube.com/watch?v=YH0YXgDWZXA)
+
+
+
+### Model Taste
+
+> WIP..
+> I like Karina's writing style very much.
+- [Everyone Is Looking at Meta's Glimmer-30B the Wrong Way
+](https://substack.com/home/post/p-210598592)
+
+
+
